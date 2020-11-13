@@ -86,5 +86,3 @@ There are a few stretch problems found throughout the files, don't work on them 
 Follow these steps for completing your project.
 
 See Canvas for submission instructions 
-
-git commit --allow-empty -m "Create a CodeGrade submission" && git push -u origin mike-murphy
