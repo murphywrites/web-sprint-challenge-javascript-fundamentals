@@ -17,16 +17,22 @@ myFunction();
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
+// In Line 12, the function nestedFunction() is prompted to search for a variable named "internal". First, it looks within itself to find that variable name. Once it is finished searching for the variable within the function, javascript functions have the ability to search for a variable outside of itself. During this second phase of the search, nestedFunction() finds the variable "internal" declared on Line 9 and is able to use this on Line 12.
 
 
 
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Create a function called `summation` that accepts a parameter and uses a counter to return the summation of that number. For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(param) {
+  let total = 0;
+  for(let i=0;i<param;i++){
+    total += param - i;
+  } 
+return total;
   }
+
+  console.log(summation(4))
  
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -48,32 +54,46 @@ const zooAnimals = [
   /* 🦁🦁🦁 Request 1: .forEach() 🦁🦁🦁
   The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
   */
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(data){
+    const displayNames = [];
+    data.forEach(function(item){
+      displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`)
+    })
+    return displayNames
   }
-  
+  console.log(animalNames(zooAnimals))
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
   */
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames(data){
+    const lowCaseAnimalNames = data.map((item) => {
+      return `${item.animal_name.toLowerCase()}`;
+    })
+    console.log(lowCaseAnimalNames)
+    return lowCaseAnimalNames;
   }
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoos are concerned about animals with a lower population count. Using filter, create a new array of objects called lowPopulationAnimals which contains only the animals with a population less than 5.
   */
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(data){
+    const lowPopulationAnimals = data.filter((item) => {
+      return item.population < 5;
+    })
+    return lowPopulationAnimals;
   }
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
   The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
   */
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+  function USApop(data){
+    const totalAnimalPop = data.reduce((accumulator, item) => {
+      return accumulator + item.population;
+    },0);
+    return totalAnimalPop;
   }
   
   
@@ -84,19 +104,22 @@ const zooAnimals = [
     * The last parameter accepts a callback
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
-  }
+  function consume( a, b, cb){
+    return cb(a,b);
+    }
+   
+  
  
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Create a function named add that returns the sum of two numbers 🦁🦁🦁
-  function add(/*Your Code Here */){
+  function add(num1, num2){
+    return num1 + num2;
     /*Your Code Here*/
   }
 // 🦁🦁🦁 Create a function named multiply that returns the product of two numbers 🦁🦁🦁
-  function multiply(/*Your Code Here */){
-   /*Your Code Here */
+  function multiply(num1, num2){
+    return num1 * num2;
   }
 
  // 🦁🦁🦁 Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!" 🦁🦁🦁
